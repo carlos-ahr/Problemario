@@ -1,0 +1,122 @@
+\documentclass[11pt, twoside]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{float}
+
+\usepackage[letterpaper, margin=.8in, includehead, includefoot]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{mwe}
+\graphicspath{{img}}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{circuitikz}
+\usepackage{multicol}
+\usepackage[outputdir=build]{minted}
+\usemintedstyle{one-dark}
+
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{15pt}
+
+\def\Titulo{Problemario 2ndo Parcial}
+\def\Materia{Señales y sistemas de control clásico}
+\def\Profesor{Jesica Azusena Escobar Medina}
+\def\Grupo{6CV6}
+
+\nocite{*}
+
+\begin{document}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO,RE]{\textbf{\Titulo \space| Carlos Alberto Herrera Rangel | \Grupo}}
+\fancyfoot[LE, RO]{\thepage\ of \pageref{LastPage}}
+\section{Calcule las constantes $K_{p}$, $K_{v}$, $K_{a}$ y el error en estado estacionario para:}
+\subsection{Inciso A}
+\begin{equation*}
+    \mathbf{G(s) = \frac{1}{s^{2}\left(s+12\right)};\space H(s) = Ks}
+\end{equation*}
+\textbf{Solución:}\\\\
+Obteniendo $G(s)H(s)$:
+\begin{align*}
+    G(s)H(s) & = \frac{Ks}{s^{2}\left(s+12\right)} \\
+    G(s)H(s) & = \frac{K}{s\left(s+12\right)}      \\
+\end{align*}
+Obteniendo $K_{p}$:
+\begin{align*}
+    K_{p} & = \lim_{s\to 0}{G(s)H(s)}                              \\
+          & = \left|\frac{K}{s\left(s+12\right)}\right|_{s=0}      \\
+          & = \frac{K}{(0)((0)+12)} = \frac{K}{0} = \boxed{\infty} \\
+\end{align*}
+Obteniendo $K_{v}$:
+\begin{align*}
+    K_{v} & = \lim_{s\to 0}{sG(s)H(s)}                \\
+          & = \left|\frac{K}{s+12}\right|_{s=0}       \\
+          & = \frac{K}{(0)+12} = \boxed{\frac{K}{12}}
+\end{align*}
+Obteniendo $K_{a}$:
+\begin{align*}
+    K_{a} & = \lim_{s\to0}{s^{2}G(s)H(s)}                    \\
+          & = \left|\frac{Ks}{s+12}\right|_{s=0}             \\
+          & = \frac{K(0)}{(0)+12} = \frac{0}{12} = \boxed{0}
+\end{align*}
+\newpage
+Calculando el error en estado estacionario:
+\begin{align*}
+    e_{ss} & = \frac{1}{1+K_{p}} = \frac{1}{1+\infty} = \boxed{0}              \\
+    e_{ss} & = \frac{1}{K_{v}} = \frac{1}{\frac{K}{12}} = \boxed{\frac{12}{K}} \\
+    e_{ss} & = \frac{1}{K_{a}} = \frac{1}{0} = \boxed{\infty}
+\end{align*}
+\subsection{Inciso B}
+\begin{equation*}
+    \mathbf{G(s)=\frac{K(1+0.5s)}{s(s+1)(2s+1)(s^{2}+s+1)};\space H(s)=1}
+\end{equation*}
+\subsection{Inciso C}
+\begin{equation*}
+    \mathbf{G(s)=\frac{1}{s^{2}(s+12)};\space H(s)=\frac{5(s+1)}{s+5}}
+\end{equation*}
+\subsection{Inciso D}
+\begin{equation*}
+    \mathbf{G(s)=\frac{K(2s+1)(4s+1)}{s^{2}(s^{2}+s+1)};\space H(s)=1}
+\end{equation*}
+\subsection{Inciso E}
+\begin{equation*}
+    \mathbf{G(s)=\frac{1000}{s(s+10)(s+100)};\space H(s)=1}
+\end{equation*}
+\section{¿Qué valor de $\mathbf{K_{v}}$ se requiere para que $\mathbf{e_{ss}\le 10\%}$?}
+\section{Determine si los siguientes sistemas son estables:}
+\subsection{Inciso A}
+\begin{equation*}
+    \mathbf{s^{7} + 3s^{6} + 3s^{5} + s^{4} + s^{3} + 3s^{2} + 3s + 10}
+\end{equation*}
+\subsection{Inciso B}
+\begin{equation*}
+    \mathbf{s^{4} + s^{3} + s^{2} + s + 3}
+\end{equation*}
+\subsection{Inciso C}
+\begin{equation*}
+    \mathbf{2s^{4} + s^{3} + 3s^{2} + 5s + 10}
+\end{equation*}
+\section{Determine el valor de $\mathbf{K}$ para que los siguientes sistemas sean estables:}
+\subsection{Inciso A}
+\begin{equation*}
+    \mathbf{s^{4} + 3s^{2} + Ks^{2} + 2s + 1 = 0}
+\end{equation*}
+\subsection{Inciso B}
+\begin{equation*}
+    \mathbf{s^{3} + 3408.3s^{2} + 1204000s + 1.5 \times 10^{-4}K = 0}
+\end{equation*}
+\subsection{Inciso C}
+\begin{equation*}
+    \mathbf{s^{3} + 3Ks^{2} + (K + 2)s + 4 = 0}
+\end{equation*}
+\end{document}
